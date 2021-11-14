@@ -2,7 +2,7 @@
 layout: post
 title:  "First commit"
 date:   2021-11-13 17:54:04 +0100
-categories: opinion update
+categories: opinion 
 ---
 
 <h1>First commit, so original...</h1>
