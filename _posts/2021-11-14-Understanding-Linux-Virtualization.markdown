@@ -17,7 +17,7 @@ categories: research
 	<li>Google</li>
 </ul>
 
-<h1>Types of Virtualization</h1>
+<h2>Types of Virtualization</h2>
 <ul>
 	<li><b>Desktop Virtualization (VDI - Virtual Desktop Infraestructure)</b></li>
 	<p>
@@ -45,7 +45,7 @@ categories: research
 	</p>
 </ul>
 
-<h1>Ways to make VMs</h1>
+<h2>Ways to make VMs</h2>
 <ul>
 	<li><b>Partitioning</b></li>
 	<p>
@@ -79,7 +79,21 @@ categories: research
 	</p>
 </ul>
 <small>
-*A container is a object that packages an application and all its dependencies so that the application can be scaled out and rapidly deployed without needing a VM or a hypervisor.*
+		*A container is a object that packages an application and all its dependencies so that the application can be scaled out and rapidly deployed without needing a VM or a hypervisor.*
 </small>
 
-The next step is understanding the funcionalities of a hypervisor
+<h2> Hypervisor/VMM </h2>
+<p>
+	The VMM (Virtual Machine Manager) or hypervisor is a software that monitores and controls virtual machines or guest OSes. It's responsible for ensuring different virtualization tasks, for efficiently controlling physical platform resources and for allocating the resources requested by these guest OSes.
+</p>
+<h1>Types of hypervisors</h1>
+<p>
+There are two types of hypervisors but its definitions are not clear yet. The main difference between this two is that, type 1 ones runs the VMs directly on top of the hardware, unlike the type 2 ones that runs on top of a present OS.
+</p>
+<ul>
+	<li><b>Type 1 Hypervisor</b></li>
+	<p> These are also called bare-metal, embedded, or native hypervisors. Their main advantages are that they are easy to install and configure, small in size and more secure</p>
+
+	<li><b>Type 2 Hypervisor</b></li>
+	<p>They reside on top of the OS so they have better customization and wider range of hardware support</p>
+</ul>
