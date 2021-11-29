@@ -49,7 +49,7 @@ categories: research
 <ul>
 	<li><b>Partitioning</b></li>
 	<p>
-		The CPU is divided into different parts and each part works as an individual system
+		The CPU is divided into different parts and each part works as an individual system.
 	</p>
 
 	<li><b>Full Virtualization</b></li>
@@ -68,7 +68,7 @@ categories: research
 	</p>
 
 	<li><b>Paravirtualization</b></li>
-	<p>I don't care about this one...</p>
+	<p>The hypervisor has an API and the OS of the VM makes calls to it. The host OS has to be modified to receive the calls from that API (hypercalls)</p>
 
 	<li><b>Hybrid Virtualization</b></li>
 	<p>Full virtualization + Paravirtualization</p>
