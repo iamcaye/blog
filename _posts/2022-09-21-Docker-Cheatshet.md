@@ -109,4 +109,3 @@ volumes:
     
 ```
 Una vez tenemos configurado este archivo, ejecutando `docker compose up` se creara un container para cada proyectos
-<b>To be continued.....</b>
