@@ -63,10 +63,16 @@ GEM
       ffi (~> 1.9)
     terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
+    thread_safe (0.3.6)
+    tzinfo (1.2.10)
+      thread_safe (~> 0.1)
+    tzinfo-data (1.2022.2)
+      tzinfo (>= 1.0.0)
     unicode-display_width (1.8.0)
+    wdm (0.1.1)
 
 PLATFORMS
-  x86_64-linux
+  ruby
 
 DEPENDENCIES
   jekyll (~> 4.2.1)
@@ -75,6 +81,3 @@ DEPENDENCIES
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)
-
-BUNDLED WITH
-   2.2.31

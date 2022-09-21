@@ -55,7 +55,7 @@ docker run --name <name> -p<puerto>:<puerto-docker> -d <imagen>
 
 
 ## DockerFile
-Se usa para especificar las acciones que realizara el container al iniciarse
+Se usa para especificar las acciones que realizara el container al hacer una build
 * Ejemplo básico con node
 
 ```DockerFile
@@ -82,3 +82,31 @@ docker network ls
 docker network create <name>
 ```
 * Para configurar conexiones entre imagenes dentro de un mismo contenedor la red existente se llama igual que el controlador
+* Si quieres especificar una red especifica añade la flag --network <red>
+
+## DOCKER COMPOSE
+Es una herramienta de docker para hacer todo lo anterior mucho más facil y automatizando pasos. Para ello debemos crear el fichero docker-compose.yaml.
+Ejemplo de archivo docker-compose.yml con un proyecto de node y mongo:
+```yaml
+version: "3.9"
+services: # aqui especificamos las imagenes que se incluiran en nuestra build
+  node_proyect:
+    build: .
+    ports:
+      - "3000:3000" 
+    links:
+      - monguito
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      # env params
+    volumes: # este parametro es importante para no perder datos cada vez que se hace una build
+      - mongo-data:/data/db
+volumes:
+  mongo-data:
+    
+```
+Una vez tenemos configurado este archivo, ejecutando `docker compose up` se creara un container para cada proyectos
+<b>To be continued.....</b>
