@@ -124,7 +124,7 @@ WORKDIR /home/app
 
 EXPOSE 3000  // puerto que se va exponer dentro del container
 
-CMD ["node", "/home/app/index.js"]
+CMD ["nodemon", "index.js"]
 ```
 
 Será necesario añadir un nuevo archivo de docker-compose (docker-compose-dev.yml)
