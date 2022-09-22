@@ -108,4 +108,51 @@ volumes:
   mongo-data:
     
 ```
-Una vez tenemos configurado este archivo, ejecutando `docker compose up` se creara un container para cada proyectos
+
+Una vez tenemos configurado este archivo, ejecutando `docker compose up` se creara un container para cada proyecto con su propia red.
+
+# Environments
+Podemos tener diferentes entornos (prod, dev) creando diferentes Dockerfiles: <br/>
+Ejemplo Dockerfile.dev para proyecto con node
+```Dockerfile
+FROM node:18 // <imagen>:<version>
+
+RUN npm i -g nodemon
+RUN mkdir -p /home/app // crea la carpeta dentro del docker donde vamos a alojar la app
+
+WORKDIR /home/app
+
+EXPOSE 3000  // puerto que se va exponer dentro del container
+
+CMD ["node", "/home/app/index.js"]
+```
+
+Será necesario añadir un nuevo archivo de docker-compose (docker-compose-dev.yml)
+```yml
+version: "3.9"
+services: # aqui especificamos las imagenes que se incluiran en nuestra build
+  node_proyect:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev # con este parametro incluimos un dockerfile especifico
+    ports:
+      - "3000:3000" 
+    links:
+      - monguito
+    volumes:
+      - .:/home/app
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      # env params
+    volumes: # este parametro es importante para no perder datos cada vez que se hace una build
+      - mongo-data:/data/db
+volumes:
+  mongo-data:
+    
+```
+Para ejecutar docker compose con un archivo de configuracion especifico podemos usar la flag -f: `docker compose -f docker-compose-dev.yml up`
+ 
+Con esta info se puede empezar a cacharrear, ire actualizando conforme vaya descubriendo cosas
