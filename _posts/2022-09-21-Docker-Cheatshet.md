@@ -42,7 +42,7 @@ docker rm <container>
 ```
 * Port mapping
 ```bash
-docker -p<puerto-local>:<puerto-docker> --name <name> <imagen>
+docker create -p<puerto-local>:<puerto-docker> --name <name> <imagen>
 ```
 * Mostrar logs del contenedor
 ```bash
