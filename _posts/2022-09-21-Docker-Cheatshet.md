@@ -6,7 +6,9 @@ categories: research
 ---
 
 ## Introducción
-* **Imagen:** como concepto básico haciendo referencia a la virtualizacion de sistemas, se puede entender como el sistema operativo o distribución que se utilizara. Solo que nos permite ir más allá, dándonos la posibilidad de utilizar _"sistemas operativos"_ diseñados para ejecutar un proyecto especifico. Por ejemplo, existe una imagen del sistema operativo alpine (alpine:<version>), pero a su vez tambien existe la imagen de alpine diseñada para trabajar con node (node:<version>-alpine)
+* **Imagen:** como concepto básico haciendo referencia a la virtualizacion de sistemas, se puede entender como el sistema operativo o distribución que se utilizara. Solo que nos permite ir más allá, dándonos la posibilidad de utilizar _"sistemas operativos"_ diseñados para ejecutar un proyecto especifico. Por ejemplo, existe una imagen del sistema operativo `alpine (alpine:<version>)`, pero a su vez tambien existe la imagen de alpine diseñada para trabajar con node`(node:<version>-alpine)`
+<br />
+<br />
 * **Contenedor:** paquete portable de imagenes que contienen uno o varios proyectos.
 
 ## Comandos
