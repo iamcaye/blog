@@ -14,7 +14,6 @@ docker images
 ```bash
 docker pull <imagen>:<version>
 ```
-* Listado de imagenes disponibles: <a href='https://hub.docker.com/' target='_noopener'>Docker Hub</a>
 * Crear un contenedor:
 ```bash
 docker create --name <name> <imagen>
@@ -54,7 +53,7 @@ docker run --name <name> -p<puerto>:<puerto-docker> -d <imagen>
 ```
 
 
-## DockerFile
+## Dockerfile
 Se usa para especificar las acciones que realizara el container al hacer una build
 * Ejemplo básico con node
 
@@ -71,6 +70,8 @@ CMD ["node", "/home/app/index.js"]
 ```bash
 docker build -t <nombre>:<version>
 ```
+
+Listado de imagenes: <a href="https://hub.docker.com/search?q=" target="noopener">Docker Hub</a>
 
 # Conexion entre contenedores
 * Para listar todas las redes
