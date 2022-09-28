@@ -63,7 +63,7 @@ docker run --name <name> -p<puerto>:<puerto-docker> -d <imagen>
 Se usa para especificar las acciones que realizara el container al hacer una build
 * Ejemplo básico con node
 
-```DockerFile
+```Dockerfile
 FROM node:18 // <imagen>:<version>
 
 RUN mkdir -p /home/app // crea la carpeta dentro del docker donde vamos a alojar la app
