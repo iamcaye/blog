@@ -2,7 +2,7 @@
 layout:     post
 title:      Django Cheatsheet
 date:       2022-02-18 12:23:25 +0100
-categories: research
+categories: cheatsheets
 ---
 
 ## Project

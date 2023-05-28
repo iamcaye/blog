@@ -2,7 +2,7 @@
 layout:     post
 title:      Docker Cheatsheet
 date:       2022-09-21
-categories: research
+categories: cheatsheets
 ---
 
 ## Introducción
