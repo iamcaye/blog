@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="blog.iamcaye.com/feed.xml" rel="self" type="application/atom+xml" /><link href="blog.iamcaye.com/" rel="alternate" type="text/html" /><updated>2023-08-28T10:06:27+00:00</updated><id>blog.iamcaye.com/feed.xml</id><title type="html">readme.bp - Caye’s blog</title><subtitle>I'll use this blog to talk about the new things that i'm learning. Right now i've just started reading a book about KVM virtualization but i also like hardware and software development. The description is a little bit improvised and not well thought... don't mind me</subtitle><entry><title type="html">AI</title><link href="blog.iamcaye.com/research/2023/06/12/AI.html" rel="alternate" type="text/html" title="AI" /><published>2023-06-12T00:00:00+00:00</published><updated>2023-06-12T00:00:00+00:00</updated><id>blog.iamcaye.com/research/2023/06/12/AI</id><content type="html" xml:base="blog.iamcaye.com/research/2023/06/12/AI.html"><![CDATA[<h2 id="cnn-arquitecture">CNN Arquitecture</h2>
+<h1 id="typical-cnn">Typical CNN</h1>
+<p>It’s made of two stages:</p>
+<ul>
+  <li><strong>Stage 1:</strong>
+  It is a series of convolutions followed by pooling layers (feature transformer).</li>
+  <li><strong>Stage 2:</strong>
+This one is made of dense layers. They are just some feed forward layers (non linear transformer).</li>
+</ul>]]></content><author><name></name></author><category term="research" /><summary type="html"><![CDATA[CNN Arquitecture Typical CNN It’s made of two stages: Stage 1: It is a series of convolutions followed by pooling layers (feature transformer). Stage 2: This one is made of dense layers. They are just some feed forward layers (non linear transformer).]]></summary></entry><entry><title type="html">Docker Cheatsheet</title><link href="blog.iamcaye.com/cheatsheets/2022/09/21/Docker-Cheatshet.html" rel="alternate" type="text/html" title="Docker Cheatsheet" /><published>2022-09-21T00:00:00+00:00</published><updated>2022-09-21T00:00:00+00:00</updated><id>blog.iamcaye.com/cheatsheets/2022/09/21/Docker-Cheatshet</id><content type="html" xml:base="blog.iamcaye.com/cheatsheets/2022/09/21/Docker-Cheatshet.html"><![CDATA[<h2 id="introducción">Introducción</h2>
+<ul>
+  <li><strong>Imagen:</strong> como concepto básico haciendo referencia a la virtualizacion de sistemas, se puede entender como el sistema operativo o distribución que se utilizara. Solo que nos permite ir más allá, dándonos la posibilidad de utilizar <em>“sistemas operativos”</em> diseñados para ejecutar un proyecto especifico. Por ejemplo, existe una imagen del sistema operativo <code class="highlighter-rouge">alpine (alpine:&lt;version&gt;)</code>, pero a su vez tambien existe la imagen de alpine diseñada para trabajar con node<code class="highlighter-rouge">(node:&lt;version&gt;-alpine)</code>
+<br />
+<br /></li>
+  <li><strong>Contenedor:</strong> paquete portable de imagenes que contienen uno o varios proyectos.</li>
+</ul>
+
+<h2 id="comandos">Comandos</h2>
+<ul>
+  <li>Listado de imagenes descargas
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker images
+</code></pre></div>    </div>
+  </li>
+  <li>Descargar una imagen
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull &lt;imagen&gt;:&lt;version&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Crear un contenedor:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker create <span class="nt">--name</span> &lt;name&gt; &lt;imagen&gt;
+</code></pre></div>    </div>
+    <p>Devuele el id del contenedor creado</p>
+  </li>
+  <li>Iniciar un contenedor
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker start &lt;container&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Parar un contenedor
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker stop &lt;container&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Listado de containers corriendo actualmente
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps
+</code></pre></div>    </div>
+  </li>
+  <li>Listado de containers creados
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker ps <span class="nt">-a</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Eliminar un continer
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">rm</span> &lt;container&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Port mapping
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker create <span class="nt">-p</span>&lt;puerto-local&gt;:&lt;puerto-docker&gt; <span class="nt">--name</span> &lt;name&gt; &lt;imagen&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Mostrar logs del contenedor
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker logs <span class="nt">--follow</span> &lt;container&gt; 
+</code></pre></div>    </div>
+  </li>
+  <li>PULL + CREATE + START
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--name</span> &lt;name&gt; <span class="nt">-p</span>&lt;puerto&gt;:&lt;puerto-docker&gt; <span class="nt">-d</span> &lt;imagen&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="dockerfile">Dockerfile</h2>
+<p>Se usa para especificar las acciones que realizara el container al hacer una build</p>
+<ul>
+  <li>Ejemplo básico con node</li>
+</ul>
+
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> node:18 // &lt;imagen&gt;:&lt;version&gt;</span>
+
+<span class="k">RUN </span><span class="nb">mkdir</span> <span class="nt">-p</span> /home/app // crea la carpeta dentro del docker donde vamos a alojar la app
+<span class="k">COPY</span><span class="s"> . /home/app // copiamos el proyecto dentro de la carpeta que hemos creado</span>
+
+<span class="k">EXPOSE</span><span class="s"> 3000  // puerto que se va exponer dentro del container</span>
+<span class="k">CMD</span><span class="s"> ["node", "/home/app/index.js"]</span>
+</code></pre></div></div>
+<ul>
+  <li>Para hacer una build de una imagen
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> &lt;nombre&gt;:&lt;version&gt;
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Listado de imagenes: <a href="https://hub.docker.com/search?q=" target="noopener">Docker Hub</a></p>
+
+<h1 id="conexion-entre-contenedores">Conexion entre contenedores</h1>
+<ul>
+  <li>Para listar todas las redes
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker network <span class="nb">ls</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Para crear una red nueva
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker network create &lt;name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Para configurar conexiones entre imagenes dentro de un mismo contenedor la red existente se llama igual que el controlador</li>
+  <li>Si quieres especificar una red especifica añade la flag –network <red></red></li>
+</ul>
+
+<h2 id="docker-compose">DOCKER COMPOSE</h2>
+<p>Es una herramienta de docker para hacer todo lo anterior mucho más facil y automatizando pasos. Para ello debemos crear el fichero docker-compose.yaml.
+Ejemplo de archivo docker-compose.yml con un proyecto de node y mongo:</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.9"</span>
+<span class="na">services</span><span class="pi">:</span> <span class="c1"># aqui especificamos las imagenes que se incluiran en nuestra build</span>
+  <span class="na">node_proyect</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span> <span class="s">.</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">3000:3000"</span> 
+    <span class="na">links</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">monguito</span>
+  <span class="na">mongodb</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">mongo</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">27017:27017"</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="c1"># env params</span>
+    <span class="na">volumes</span><span class="pi">:</span> <span class="c1"># este parametro es importante para no perder datos cada vez que se hace una build</span>
+      <span class="pi">-</span> <span class="s">mongo-data:/data/db</span>
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">mongo-data</span><span class="pi">:</span>
+    
+</code></pre></div></div>
+
+<p>Una vez tenemos configurado este archivo, ejecutando <code class="highlighter-rouge">docker compose up</code> se creara un container para cada proyecto con su propia red.</p>
+
+<h1 id="environments">Environments</h1>
+<p>Podemos tener diferentes entornos (prod, dev) creando diferentes Dockerfiles: <br />
+Ejemplo Dockerfile.dev para proyecto con node</p>
+<div class="language-Dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> node:18 // &lt;imagen&gt;:&lt;version&gt;</span>
+
+<span class="k">RUN </span>npm i <span class="nt">-g</span> nodemon
+<span class="k">RUN </span><span class="nb">mkdir</span> <span class="nt">-p</span> /home/app // crea la carpeta dentro del docker donde vamos a alojar la app
+
+<span class="k">WORKDIR</span><span class="s"> /home/app</span>
+
+<span class="k">EXPOSE</span><span class="s"> 3000  // puerto que se va exponer dentro del container</span>
+
+<span class="k">CMD</span><span class="s"> ["nodemon", "index.js"]</span>
+</code></pre></div></div>
+
+<p>Será necesario añadir un nuevo archivo de docker-compose (docker-compose-dev.yml)</p>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.9"</span>
+<span class="na">services</span><span class="pi">:</span> <span class="c1"># aqui especificamos las imagenes que se incluiran en nuestra build</span>
+  <span class="na">node_proyect</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span>
+      <span class="na">context</span><span class="pi">:</span> <span class="s">.</span>
+      <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">Dockerfile.dev</span> <span class="c1"># con este parametro incluimos un dockerfile especifico</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">3000:3000"</span> 
+    <span class="na">links</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">monguito</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">.:/home/app</span>
+  <span class="na">mongodb</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">mongo</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">27017:27017"</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="c1"># env params</span>
+    <span class="na">volumes</span><span class="pi">:</span> <span class="c1"># este parametro es importante para no perder datos cada vez que se hace una build</span>
+      <span class="pi">-</span> <span class="s">mongo-data:/data/db</span>
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">mongo-data</span><span class="pi">:</span>
+    
+</code></pre></div></div>
+<p>Para ejecutar docker compose con un archivo de configuracion especifico podemos usar la flag -f: <code class="highlighter-rouge">docker compose -f docker-compose-dev.yml up</code></p>
+
+<p>Con esta info se puede empezar a cacharrear, ire actualizando conforme vaya descubriendo cosas</p>]]></content><author><name></name></author><category term="cheatsheets" /><summary type="html"><![CDATA[Introducción Imagen: como concepto básico haciendo referencia a la virtualizacion de sistemas, se puede entender como el sistema operativo o distribución que se utilizara. Solo que nos permite ir más allá, dándonos la posibilidad de utilizar “sistemas operativos” diseñados para ejecutar un proyecto especifico. Por ejemplo, existe una imagen del sistema operativo alpine (alpine:&lt;version&gt;), pero a su vez tambien existe la imagen de alpine diseñada para trabajar con node(node:&lt;version&gt;-alpine) Contenedor: paquete portable de imagenes que contienen uno o varios proyectos.]]></summary></entry><entry><title type="html">Django Cheatsheet</title><link href="blog.iamcaye.com/cheatsheets/2022/02/18/Django-Cheatsheet.html" rel="alternate" type="text/html" title="Django Cheatsheet" /><published>2022-02-18T11:23:25+00:00</published><updated>2022-02-18T11:23:25+00:00</updated><id>blog.iamcaye.com/cheatsheets/2022/02/18/Django-Cheatsheet</id><content type="html" xml:base="blog.iamcaye.com/cheatsheets/2022/02/18/Django-Cheatsheet.html"><![CDATA[<h2 id="project">Project</h2>
+<p>To create a blank new project:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>django-admin startproject mysite
+</code></pre></div></div>
+
+<p>To apply changes of a database:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python manage.py migrate
+</code></pre></div></div>
+
+<p>To start the dev server:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python manage.py runserver
+</code></pre></div></div>
+<p>If you want to run it on a specific port try:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python manage.py runserver 127.0.0.1:&lt;port&gt;
+</code></pre></div></div>
+
+<h1 id="project-structure">Project Structure</h1>
+<ul>
+  <li>manage.py : command-line utility.</li>
+  <li>mysite/ : project folder.
+    <ul>
+      <li>asgi.py : ASGI configuration (Asynchronous Web Server &amp; App).</li>
+      <li>settings.py : project configuration.</li>
+      <li>urls.py : file to define your urls.</li>
+      <li>wsgi.py: WSGI configuration (Web Server Gateway Interface).</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="apps">Apps</h2>
+<p>To create a new app</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python manage.py startapp &lt;appName&gt;
+</code></pre></div></div>
+
+<p>You will need a model to design you app data schema. In every Django App, you have a file named <strong>models.py</strong> where you can create the models defining python classes. Each class represents a db table and its attributes are the fields of the table.
+<a href="https://docs.djangoproject.com/en/4.0/ref/models/fields/" target="_blank">Model Field Reference</a></p>
+
+<h1 id="app-structure">App Structure</h1>
+<ul>
+  <li>admin.py : register models for django admin.</li>
+  <li>app.py : main config of the app.</li>
+  <li>migrations/ : contains databases migrations.</li>
+  <li>models.py : data models of the app.</li>
+  <li>tests.py : app tests.</li>
+  <li>views.py : has the logic of the app.</li>
+</ul>
+
+<p>When you change a model you need to run the django migrations system that propagates the changes to the database tables:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python manage.py makemigrations &lt;app&gt;
+</code></pre></div></div>
+
+<p>And then sync the project with the new model:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python manage.py migrate
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="superuser">SuperUser</h2>
+<p>Django has a built-in administration interface that can be usefull to see the data and edit it.
+To create a superuser:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python manage.py createsuperuser
+</code></pre></div></div>
+
+<p>To add a model to your administration site, you’ll have to edit admin.py file of your app:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="o">&lt;</span><span class="n">model</span><span class="o">&gt;</span>
+
+<span class="n">admin</span><span class="p">.</span><span class="n">site</span><span class="p">.</span><span class="n">register</span><span class="p">(</span><span class="o">&lt;</span><span class="n">model</span><span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div></div>
+<p>You can customize this interface to display the data as you want. <a href="https://realpython.com/customize-django-admin-python/#customizing-the-django-admin" target="_blank">Django Admin Customization</a></p>
+
+<hr />
+
+<h2 id="querysets-and-managers">QuerySets and managers</h2>
+<p>You can define the database you are using in settings.py.</p>
+<ul>
+  <li>Creating data - save()</li>
+  <li>Getting data - get()</li>
+  <li>Retrieving all objects - all()</li>
+  <li>Retrieving filtered data - filter() or exclude()</li>
+  <li>Ordering data - order_by()</li>
+  <li>Deleting objects - delete()</li>
+</ul>
+
+<h1 id="managers">Managers</h1>
+<p>The default manager is <code class="highlighter-rouge">objects</code> but you can define alternative managers to directly retrieve filtered data. Let’s see an example of a blog application manager:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PublishedManager</span> <span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Manager</span><span class="p">):</span>
+	<span class="k">def</span> <span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">PublishedManager</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">get_queryset</span><span class="p">().</span><span class="nb">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s">'published'</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Post</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+	<span class="c1"># ...
+</span>	<span class="n">objects</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Manager</span><span class="p">()</span> <span class="c1"># default manager (if you dont define it, it won't be created when you have custom managers)
+</span>	<span class="n">published</span> <span class="o">=</span> <span class="n">PublishedManager</span><span class="p">()</span> <span class="c1"># custom manager
+</span></code></pre></div></div>
+
+<hr />
+
+<h2 id="building-list-and-detail-views">Building List and detail views</h2>
+<p>Create a view inside of your app directory on <code class="highlighter-rouge">views.py</code>. Let’s use again the blog site example:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">get_object_or_404</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Post</span>
+
+<span class="k">def</span> <span class="nf">post_list</span> <span class="p">(</span><span class="n">request</span><span class="p">):</span>
+	<span class="n">posts</span> <span class="o">=</span> <span class="n">Post</span><span class="p">.</span><span class="n">published</span><span class="p">.</span><span class="nb">all</span><span class="p">()</span> <span class="c1"># we're using the custom manager ;)
+</span>	<span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/post/list.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'posts'</span> <span class="p">:</span> <span class="n">posts</span><span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">post_detail</span> <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">post</span><span class="p">):</span>
+	<span class="n">post</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Post</span><span class="p">,</span> <span class="n">slug</span><span class="o">=</span><span class="n">post</span><span class="p">,</span> <span class="p">...)</span>
+	<span class="k">return</span> <span class="n">render</span> <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">'blog/post/detail.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'posts'</span><span class="p">:</span> <span class="n">posts</span><span class="p">})</span>
+</code></pre></div></div>
+
+<h1 id="adding-url-patterns-for-each-view">Adding URL patterns for each view</h1>
+<p>You can create custom URL patterns for your apps by defining them in <code class="highlighter-rouge">urls.py</code> inside your app directory. Using the blog site it would look like this:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+<span class="n">app_name</span> <span class="o">=</span> <span class="s">'blog'</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="c1"># post views
+</span>	<span class="n">path</span><span class="p">(</span><span class="s">''</span><span class="p">,</span> <span class="n">views</span><span class="p">.</span><span class="n">post_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'post_list'</span><span class="p">),</span>
+	<span class="n">path</span><span class="p">(</span><span class="s">'&lt;int:year&gt;/&lt;int:month&gt;/&lt;int/day&gt;/&lt;slug:post&gt;/'</span><span class="p">,</span>
+			<span class="n">views</span><span class="p">.</span><span class="n">post_detail</span><span class="p">,</span>
+			<span class="n">name</span><span class="o">=</span><span class="s">'post_detail'</span><span class="p">),</span>
+<span class="p">]</span>
+</code></pre></div></div>]]></content><author><name></name></author><category term="cheatsheets" /><summary type="html"><![CDATA[Project To create a blank new project: django-admin startproject mysite]]></summary></entry><entry><title type="html">Creating a Chat Service</title><link href="blog.iamcaye.com/research/2022/01/06/Creating-a-Chat-Service.html" rel="alternate" type="text/html" title="Creating a Chat Service" /><published>2022-01-06T20:32:23+00:00</published><updated>2022-01-06T20:32:23+00:00</updated><id>blog.iamcaye.com/research/2022/01/06/Creating-a-Chat-Service</id><content type="html" xml:base="blog.iamcaye.com/research/2022/01/06/Creating-a-Chat-Service.html"><![CDATA[<h1 id="why-create-a-new-chat-app">Why create a new Chat App?</h1>
+<p>My only goal is to learn about handling users and communications between them. I think there’s no point for me to make business with it knowing all the competitors in this area. But the good part is that I can compare all these enterprises that have big Chat Services and analize them to know which features makes them the best ones.</p>
+
+<h1 id="the-famous-mvp">The famous MVP</h1>
+<p>It’s very typical when you are starting a project to set an MVP (Mininum Viable Product). It’s like the minimun version of the project that you can show to your friends because this ain’t something serious.
+My MVP is going to be a chat app without auth, calls and groups. You will be able to chat with people but 1by1. I’ll explain it better…</p>
+
+<h1 id="what-do-we-need">What do we need?</h1>
+<p>The main technical components of a Chat Service are:</p>
+<ul>
+  <li>Frontend — React</li>
+  <li>Backend — In first place, I’m going to use Express.js but maybe I’ll use Django or some other framework later (Go, Java, Ruby…idk).</li>
+  <li>Database for storing the messages — MongoDB</li>
+</ul>
+
+<p><strong>To be continued…</strong></p>]]></content><author><name></name></author><category term="research" /><summary type="html"><![CDATA[Why create a new Chat App? My only goal is to learn about handling users and communications between them. I think there’s no point for me to make business with it knowing all the competitors in this area. But the good part is that I can compare all these enterprises that have big Chat Services and analize them to know which features makes them the best ones.]]></summary></entry><entry><title type="html">Understanding Linux Virtualization</title><link href="blog.iamcaye.com/research/2021/11/14/Understanding-Linux-Virtualization.html" rel="alternate" type="text/html" title="Understanding Linux Virtualization" /><published>2021-11-14T17:49:33+00:00</published><updated>2021-11-14T17:49:33+00:00</updated><id>blog.iamcaye.com/research/2021/11/14/Understanding-Linux-Virtualization</id><content type="html" xml:base="blog.iamcaye.com/research/2021/11/14/Understanding-Linux-Virtualization.html"><![CDATA[<p>Virtualization is basically, creating virtualized resources and mapping them to physical resources and it can be done by specific hardware functionality or software functionality. This can be used, for example, to create a virtual machine on your computer, so you have two machines running in the same hardware. </p>
+<p>This technology is getting more popular now, but it's not something new or revolutionary, it came from 1967 when IBM created the IBM CP-40 and its S/360-40. But in 2004, with all the new technologies such as PCI Express, DDR2 and multi-core processors, took off and 15 years of development later it got polished enough to attract all the big companies and make them compete for the best virtualization technology.</p>
+
+<h1>The competitive market of virtualization</h1>
+<ul>
+	<li>Red Hat (KVM)</li>
+	<li>Microsoft (Hyper-V)</li>
+	<li>VMWare (ESXi)</li>
+	<li>Oracle (Oracle VM)</li>
+	<li>Google</li>
+</ul>
+
+<h2>Types of Virtualization</h2>
+<ul>
+	<li><b>Desktop Virtualization (VDI - Virtual Desktop Infraestructure)</b></li>
+	<p>
+		Is a method of simulating a user workstation so it can be accesed from a remotely connected device. The pros of this type is that include easier, centralized managment and monitoring, much more simplified update workflows, simplified deployment processes and easier management of compliance and security-related options.
+	</p>
+
+	<li><b>Server Virtualization</b></li>
+	<p>
+		Is a software architecture that allows more than one server operating system to run as a guest on a given physical server host. I think this type is the most used one right now because it´s very usefull to the companies that need a lot of servers to carry out more tasks. They are easier to backup and more energy efficient than physical ones.
+	</p>
+
+	<li><b>Application Virtualization</b></li>
+	<p>
+		Is a software technology that encapsulates computer programs from the underlying OS on which they are executed. It reminds me of containers and microservices.
+	</p>
+
+	<li><b>Network Virtualization (SDN - Software-Defined Networking)</b></li>
+	<p>
+		This is a technology that creates virtual networks that are independent of the physical networking devices, such as switches.
+	</p>
+
+	<li><b>Storage Virtualization (SDS - Software-Defined Storage)</b></li>
+	<p>
+		Is a technology that creates virtual storage devices out of pooled, physical storage devices that we can centrally manage as a single storage device.
+	</p>
+</ul>
+
+<h2>Ways to make VMs</h2>
+<ul>
+	<li><b>Partitioning</b></li>
+	<p>
+		The CPU is divided into different parts and each part works as an individual system.
+	</p>
+
+	<li><b>Full Virtualization</b></li>
+	<p>
+		A virtual machine is used to simulate regular hardware while not being aware of the fact that it's virtualized.
+	</p>
+
+	<li><b>Software-based</b></li>
+	<p>
+		Uses binary translation to virtualize the execution of sensitive instruction set while emulating hardware using hardware. Trash...
+	</p>
+
+	<li><b>Hardware-based (KVM hypervisors)</b></li>
+	<p>
+		Removes the binary translation from the equation while interfacing with a CPU's virtualization features, which means that instruction sets are being executed directly on the host CPU.
+	</p>
+
+	<li><b>Paravirtualization</b></li>
+	<p>The hypervisor has an API and the OS of the VM makes calls to it. The host OS has to be modified to receive the calls from that API (hypercalls)</p>
+
+	<li><b>Hybrid Virtualization</b></li>
+	<p>Full virtualization + Paravirtualization</p>
+
+	<li><b>Hardware-based (KVM hypervisors)</b></li>
+	<p> 
+		It's a type of application virtualization that uses containers... told you ;)
+	</p>
+</ul>
+<p><small>
+		<em>A container is a object that packages an application and all its dependencies so that the application can be scaled out and rapidly deployed without needing a VM or a hypervisor.</em>
+</small></p>
+
+<h2> Hypervisor/VMM </h2>
+<p>
+	The VMM (Virtual Machine Manager) or hypervisor is a software that monitores and controls virtual machines or guest OSes. It's responsible for ensuring different virtualization tasks, for efficiently controlling physical platform resources and for allocating the resources requested by these guest OSes.
+</p>
+<h1>Types of hypervisors</h1>
+<p>
+There are two types of hypervisors but its definitions are not clear yet. The main difference between this two is that, type 1 ones runs the VMs directly on top of the hardware, unlike the type 2 ones that runs on top of a present OS.
+</p>
+<ul>
+	<li><b>Type 1 Hypervisor</b></li>
+	<p> These are also called bare-metal, embedded, or native hypervisors. Their main advantages are that they are easy to install and configure, small in size and more secure</p>
+
+	<li><b>Type 2 Hypervisor</b></li>
+	<p>They reside on top of the OS so they have better customization and wider range of hardware support</p>
+</ul>]]></content><author><name></name></author><category term="research" /><summary type="html"><![CDATA[Virtualization is basically, creating virtualized resources and mapping them to physical resources and it can be done by specific hardware functionality or software functionality. This can be used, for example, to create a virtual machine on your computer, so you have two machines running in the same hardware. This technology is getting more popular now, but it's not something new or revolutionary, it came from 1967 when IBM created the IBM CP-40 and its S/360-40. But in 2004, with all the new technologies such as PCI Express, DDR2 and multi-core processors, took off and 15 years of development later it got polished enough to attract all the big companies and make them compete for the best virtualization technology.]]></summary></entry><entry><title type="html">First commit</title><link href="blog.iamcaye.com/opinion/2021/11/13/First-commit.html" rel="alternate" type="text/html" title="First commit" /><published>2021-11-13T16:54:04+00:00</published><updated>2021-11-13T16:54:04+00:00</updated><id>blog.iamcaye.com/opinion/2021/11/13/First-commit</id><content type="html" xml:base="blog.iamcaye.com/opinion/2021/11/13/First-commit.html"><![CDATA[<h1>First commit, so original...</h1>
+
+<p>This is going to be a blog which i’ll use to talk about the new things that i’m learning or some theme i find interesting. I’m not going to be very persistent on this and really don’t know if i’ll be using it weekly or monthly.</p>
+
+<p>As far as i’ve been using this tool, it’s very efficient and intuitive, in a couple of minutes you can have a static website fully working. I still have to find out how to tweak the layouts and if it’s not very time consumming maybe i create a minimal theme, but the default one is very simple and kind of what i was looking for.</p>
+
+<p><em>I’ll be talking about Jekyll in this post but right now it’s all i have to say about it</em></p>]]></content><author><name></name></author><category term="opinion" /><summary type="html"><![CDATA[First commit, so original... This is going to be a blog which i’ll use to talk about the new things that i’m learning or some theme i find interesting. I’m not going to be very persistent on this and really don’t know if i’ll be using it weekly or monthly. As far as i’ve been using this tool, it’s very efficient and intuitive, in a couple of minutes you can have a static website fully working. I still have to find out how to tweak the layouts and if it’s not very time consumming maybe i create a minimal theme, but the default one is very simple and kind of what i was looking for. I’ll be talking about Jekyll in this post but right now it’s all i have to say about it]]></summary></entry></feed>
